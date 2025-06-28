@@ -4,6 +4,7 @@ import DTO.computadoras.ActualizarEstadoComputadoraDTO;
 import DTO.computadoras.FiltroComputadoraDTO;
 import Dominio.Computadora;
 import java.util.List;
+import negocio.NegocioException;
 
 /**
  *
@@ -16,4 +17,6 @@ public interface IComputadoraFacade {
     public Computadora desbloquearComputadora(ActualizarEstadoComputadoraDTO alumnoData);
 
     public void liberarComputadora(ActualizarEstadoComputadoraDTO alumnoData);
+    
+    public Computadora correrProgramaValidacion() throws NegocioException;
 }

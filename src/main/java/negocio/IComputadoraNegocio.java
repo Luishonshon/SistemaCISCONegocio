@@ -16,4 +16,6 @@ public interface IComputadoraNegocio {
     public Computadora desbloquearComputadora(ActualizarEstadoComputadoraDTO alumnoData);
 
     public void liberarComputadora(ActualizarEstadoComputadoraDTO alumnoData);
+    
+    public Computadora correrProgramaValidacion() throws NegocioException;
 }

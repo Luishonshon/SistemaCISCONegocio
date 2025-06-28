@@ -12,16 +12,16 @@
         </repository>
     </repositories>
     <dependencies>
-        <dependency>
-            <groupId>com.github.luishonshon</groupId>
-            <artifactId>SistemaCISCODominio</artifactId>
-            <version>main</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.luishonshon</groupId>
-            <artifactId>SistemaCISCOPersistencia</artifactId>
-            <version>main</version>
-        </dependency>
+        	    <dependency>
+	    <groupId>com.github.luishonshon</groupId>
+	    <artifactId>SistemaCISCODominio</artifactId>
+	    <version>3ab328134f</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.github.luishonshon</groupId>
+	    <artifactId>SistemaCISCOPersistencia</artifactId>
+	    <version>afd261decc</version>
+	</dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

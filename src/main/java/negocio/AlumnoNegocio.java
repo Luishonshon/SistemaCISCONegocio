@@ -30,8 +30,10 @@ public class AlumnoNegocio implements IAlumnoNegocio{
         //validaciones
         
         //Se hashea el String mandado y se compara con la contraseña en la base de datos
-        Encriptador.verificarContraseña(alumnoData.getContraseña(), alumno.getContraseña()); 
+        Encriptador.verificarContraseña(alumnoData.getContraseña(), alumno.getContrasenia()); 
         return alumno;
     }
+    
+    
     
 }
