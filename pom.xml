@@ -5,6 +5,18 @@
     <artifactId>SistemaCISCONegocio</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version> 
+                <configuration>
+                    <release>17</release> 
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <repositories>
         <repository>
             <id>jitpack.io</id>
@@ -20,7 +32,7 @@
         <dependency>
             <groupId>com.github.luishonshon</groupId>
             <artifactId>SistemaCISCOPersistencia</artifactId>
-            <version>-94ced22e66-1</version>
+            <version>9c2384f71c</version>
         </dependency>
     </dependencies>
     <properties>

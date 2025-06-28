@@ -6,16 +6,18 @@ package negocio;
 
 import DTO.software.FiltroSoftwareDTO;
 import Dominio.Software;
+import DAO.ComputadoraDAO;
+import Interfaces.IComputadoraDAO;
 
 /**
  *
  * @author luishonshon
  */
 public class SoftwareNegocio implements ISoftwareNegocio{
-
+    private final IComputadoraDAO CD = new ComputadoraDAO();
     @Override
     public Software listarSoftware(FiltroSoftwareDTO filtroListaSoftware) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new Software();
     }
     
 }

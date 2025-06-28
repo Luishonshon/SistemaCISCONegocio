@@ -68,6 +68,7 @@ public class ComputadoraNegocio implements IComputadoraNegocio {
         return computadora;
     }
 
+    //Validaciones
     private Computadora buscarComputadoraPorIp() {
         try {
             Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
@@ -102,8 +103,22 @@ public class ComputadoraNegocio implements IComputadoraNegocio {
             throw new NegocioException("El número de la computadora es inválido.");
         }
 
+        String IPV6_REGEX
+                = "^(?:[\\da-fA-F]{1,4}:){7}[\\da-fA-F]{1,4}$"
+                + "|^(?:[\\da-fA-F]{1,4}:){1,7}:$"
+                + "|^:(?::[\\da-fA-F]{1,4}){1,7}$"
+                + "|^(?:[\\da-fA-F]{1,4}:){1,6}:[\\da-fA-F]{1,4}$"
+                + "|^(?:[\\da-fA-F]{1,4}:){1,5}(?::[\\da-fA-F]{1,4}){1,2}$"
+                + "|^(?:[\\da-fA-F]{1,4}:){1,4}(?::[\\da-fA-F]{1,4}){1,3}$"
+                + "|^(?:[\\da-fA-F]{1,4}:){1,3}(?::[\\da-fA-F]{1,4}){1,4}$"
+                + "|^(?:[\\da-fA-F]{1,4}:){1,2}(?::[\\da-fA-F]{1,4}){1,5}$"
+                + "|^[\\da-fA-F]{1,4}:(?::[\\da-fA-F]{1,4}){1,6}$"
+                + "|^:(?::[\\da-fA-F]{1,4}){1,7}$"
+                + "|^(::)$";
+        String IPV4_REGEX
+                = "^((25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)(\\.|$)){4}$";
         String ip = computadora.getIp();
-        if (ip == null || (!ip.matches("^[0-9a-fA-F:.]{13}$") && !ip.matches("^[0-9a-fA-F:.]{39}$"))) {
+        if (ip == null || ip.isBlank() || (!ip.matches(IPV4_REGEX) && !ip.matches(IPV6_REGEX))) {
             throw new NegocioException("La IP es inválida.");
         }
     }
