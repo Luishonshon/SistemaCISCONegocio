@@ -2,6 +2,7 @@ package facades;
 
 import DTO.centro.AgregarCentroDTO;
 import Dominio.Centro;
+import Dominio.Plantel;
 import java.util.List;
 import negocio.ILaboratorioNegocio;
 import negocio.LaboratorioNegocio;
@@ -16,8 +17,8 @@ public class LaboratorioFacade implements ILaboratorioFacade {
     private final ILaboratorioNegocio LN = new LaboratorioNegocio();
 
     @Override
-    public List<Centro> listarLaboratorios() throws NegocioException {
-        return LN.listarLaboratorios();
+    public List<Centro> listarLaboratorios(Plantel plntl) throws NegocioException {
+        return LN.listarLaboratorios(plntl);
     }
 
     @Override

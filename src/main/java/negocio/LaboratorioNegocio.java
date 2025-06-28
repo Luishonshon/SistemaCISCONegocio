@@ -5,8 +5,10 @@ import DTO.centro.AgregarCentroDTO;
 import Dominio.Centro;
 import Dominio.Computadora;
 import static Dominio.Computadora_.centro;
+import Dominio.Plantel;
 import Interfaces.ICentroDAO;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 /**
@@ -18,23 +20,34 @@ public class LaboratorioNegocio implements ILaboratorioNegocio {
     private final ICentroDAO CD = new CentroDAO();
 
     @Override
-    public List<Centro> listarLaboratorios() throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Centro> listarLaboratorios(Plantel plntl) throws NegocioException {
+        List<Centro> laboratorios;
+        laboratorios = CD.ListaCentroPlantel(plntl);
+        return laboratorios;
     }
 
     @Override
     public Centro agregarLaboratorio(AgregarCentroDTO nuevoCentro) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Centro laboratorio;
+        //Validaciones
+        laboratorio = CD.agregarCentro(nuevoCentro);
+        //Validaciones
+        return laboratorio;
     }
 
+    /**
+     * NO implementado
+     * @return
+     * @throws NegocioException 
+     */
     @Override
     public Centro modificarLaboratorio() throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     //Validadores
-    private void validarLaboratorioDTO() throws NegocioException {
-
+    private void validarLaboratorioDTO(AgregarCentroDTO nuevoCentro) throws NegocioException {
+        
     }
 
     private void validarLaboratorio(Centro laboratorio) throws NegocioException {
@@ -59,11 +72,11 @@ public class LaboratorioNegocio implements ILaboratorioNegocio {
         if (contrasenia.length() > 100) {
             throw new NegocioException("La contraseña no puede exceder los 100 caracteres");
         }
-        LocalDate fechaInicio = laboratorio.getFechaInicio();
+        LocalTime fechaInicio = laboratorio.getTiempoInicio();
         if (fechaInicio == null) {
             throw new NegocioException("La fecha de inicio no puede ser nula");
         }
-        if (fechaInicio.isAfter(LocalDate.now())) {
+        if (fechaInicio.isAfter(LocalTime.now())) {
             throw new NegocioException("La fecha de inicio no puede ser posterior a hoy");
         }
     }
