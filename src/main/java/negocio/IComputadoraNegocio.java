@@ -1,6 +1,7 @@
 package negocio;
 
 import DTO.computadoras.ActualizarEstadoComputadoraDTO;
+import DTO.computadoras.AgregarComputadoraDTO;
 import DTO.computadoras.FiltroComputadoraDTO;
 import Dominio.Computadora;
 import java.util.List;
@@ -11,11 +12,13 @@ import java.util.List;
  */
 public interface IComputadoraNegocio {
 
+    public Computadora agregarComputadora(AgregarComputadoraDTO computadoraData, Long idSoftware) throws NegocioException;
+
     public List<Computadora> listarComputadorasPorCentro(FiltroComputadoraDTO filtro);
 
-    public Computadora desbloquearComputadora(ActualizarEstadoComputadoraDTO alumnoData);
+    public Computadora apartarComputadora(ActualizarEstadoComputadoraDTO alumnoData);
 
     public void liberarComputadora(ActualizarEstadoComputadoraDTO alumnoData);
-    
+
     public Computadora correrProgramaValidacion() throws NegocioException;
 }

@@ -1,9 +1,13 @@
 package negocio;
 
+import DAO.CentroDAO;
 import DAO.ComputadoraDAO;
 import DTO.computadoras.ActualizarEstadoComputadoraDTO;
+import DTO.computadoras.AgregarComputadoraDTO;
 import DTO.computadoras.FiltroComputadoraDTO;
+import DTO.software.AgregarSoftwareDTO;
 import Dominio.Computadora;
+import Interfaces.ICentroDAO;
 import Interfaces.IComputadoraDAO;
 import java.net.InetAddress;
 import java.util.List;
@@ -18,20 +22,41 @@ import java.util.Enumeration;
 public class ComputadoraNegocio implements IComputadoraNegocio {
 
     private final IComputadoraDAO CD = new ComputadoraDAO();
+    private final ICentroDAO LD = new CentroDAO();
 
     @Override
-    public List<Computadora> listarComputadorasPorCentro(FiltroComputadoraDTO filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Computadora agregarComputadora(AgregarComputadoraDTO computadoraData, Long idSoftware) throws NegocioException {
+        Computadora computadora;
+        //Validaciones
+        computadora = CD.agregarComputadora(computadoraData);
+        //Validaciones
+        return computadora;
     }
 
     @Override
-    public Computadora desbloquearComputadora(ActualizarEstadoComputadoraDTO alumnoData) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Computadora> listarComputadorasPorCentro(FiltroComputadoraDTO filtro) {
+        List<Computadora> computadoras;
+        //Validaciones
+        computadoras = LD.computadorasCentro(LD.BuscarCentroID(filtro.getIdCentro()));
+        //Validaciones
+        return computadoras;
+    }
+
+    @Override
+    public Computadora apartarComputadora(ActualizarEstadoComputadoraDTO alumnoData) {
+        Computadora computadora;
+        alumnoData.setEstadoNuevo("ocupada");
+        //Validaciones
+        computadora = CD.actualizarEstado(alumnoData);
+        //Validaciones
+        return computadora;
     }
 
     @Override
     public void liberarComputadora(ActualizarEstadoComputadoraDTO alumnoData) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        alumnoData.setEstadoNuevo("disponible");
+        //Validaciones
+        CD.actualizarEstado(alumnoData);
     }
 
     @Override

@@ -2,6 +2,7 @@ package negocio;
 
 import DTO.reservas.GuardarReservaDTO;
 import Dominio.Computadora;
+import Dominio.Reservacion;
 import java.time.LocalTime;
 
 /**
@@ -10,7 +11,7 @@ import java.time.LocalTime;
  */
 public interface IReservaNegocio {
 
-    public Computadora confirmarReserva(GuardarReservaDTO revervaData);
+    public Reservacion confirmarReserva(GuardarReservaDTO revervaData);
 
     public LocalTime calcularFechaReserva(LocalTime reservaHora);
 }

@@ -1,6 +1,7 @@
 package facades;
 
 import DTO.computadoras.ActualizarEstadoComputadoraDTO;
+import DTO.computadoras.AgregarComputadoraDTO;
 import DTO.computadoras.FiltroComputadoraDTO;
 import Dominio.Computadora;
 import java.util.List;
@@ -12,27 +13,33 @@ import negocio.NegocioException;
  *
  * @author luishonshon
  */
-public class ComputadoraFacade implements IComputadoraFacade{
+public class ComputadoraFacade implements IComputadoraFacade {
+
     public final IComputadoraNegocio CN = new ComputadoraNegocio();
-            
+
     @Override
     public List<Computadora> listarComputadorasPorCentro(FiltroComputadoraDTO filtro) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return CN.listarComputadorasPorCentro(filtro);
     }
 
     @Override
-    public Computadora desbloquearComputadora(ActualizarEstadoComputadoraDTO alumnoData) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Computadora apartarComputadora(ActualizarEstadoComputadoraDTO alumnoData) {
+        return CN.apartarComputadora(alumnoData);
     }
 
     @Override
     public void liberarComputadora(ActualizarEstadoComputadoraDTO alumnoData) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        CN.liberarComputadora(alumnoData);
     }
 
     @Override
-    public Computadora correrProgramaValidacion() throws NegocioException{
+    public Computadora correrProgramaValidacion() throws NegocioException {
         return CN.correrProgramaValidacion();
     }
-    
+
+    @Override
+    public Computadora agregarComputadora(AgregarComputadoraDTO computadoraData, Long idSotfware) throws NegocioException {
+        return CN.agregarComputadora(computadoraData, idSotfware);
+    }
+
 }

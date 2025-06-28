@@ -20,7 +20,7 @@
 	<dependency>
 	    <groupId>com.github.luishonshon</groupId>
 	    <artifactId>SistemaCISCOPersistencia</artifactId>
-	    <version>afd261decc</version>
+	    <version>-94ced22e66-1</version>
 	</dependency>
     </dependencies>
     <properties>
