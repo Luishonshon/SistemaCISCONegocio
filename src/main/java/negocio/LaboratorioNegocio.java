@@ -23,6 +23,7 @@ public class LaboratorioNegocio implements ILaboratorioNegocio {
     public List<Centro> listarLaboratorios(Plantel plntl) throws NegocioException {
         List<Centro> laboratorios;
         laboratorios = CD.ListaCentroPlantel(plntl);
+        validarListaLaboratorios(laboratorios);
         return laboratorios;
     }
 
@@ -31,7 +32,7 @@ public class LaboratorioNegocio implements ILaboratorioNegocio {
         Centro laboratorio;
         //Validaciones
         laboratorio = CD.agregarCentro(nuevoCentro);
-        //Validaciones
+        validarLaboratorio(laboratorio);
         return laboratorio;
     }
 

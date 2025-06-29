@@ -26,11 +26,8 @@ public class AlumnoNegocio implements IAlumnoNegocio{
     @Override
     public Alumno confirmarAlumno(ConfirmarAlumnoDTO alumnoData) {
         //validaciones
+        alumnoData.setContraseña(Encriptador.hashContraseña(alumnoData.getContraseña()));
         Alumno alumno = AD.iniciarSesion(alumnoData);
-        //validaciones
-        
-        //Se hashea el String mandado y se compara con la contraseña en la base de datos
-        Encriptador.verificarContraseña(alumnoData.getContraseña(), alumno.getContrasenia()); 
         return alumno;
     }
     

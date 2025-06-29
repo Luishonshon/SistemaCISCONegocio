@@ -8,6 +8,7 @@ import DTO.software.FiltroSoftwareDTO;
 import Dominio.Software;
 import DAO.ComputadoraDAO;
 import Interfaces.IComputadoraDAO;
+import java.util.List;
 
 /**
  *
@@ -15,9 +16,5 @@ import Interfaces.IComputadoraDAO;
  */
 public class SoftwareNegocio implements ISoftwareNegocio{
     private final IComputadoraDAO CD = new ComputadoraDAO();
-    @Override
-    public Software listarSoftware(FiltroSoftwareDTO filtroListaSoftware) {
-        return new Software();
-    }
     
 }

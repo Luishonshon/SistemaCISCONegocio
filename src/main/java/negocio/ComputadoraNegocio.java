@@ -7,6 +7,7 @@ import DTO.computadoras.AgregarComputadoraDTO;
 import DTO.computadoras.FiltroComputadoraDTO;
 import DTO.software.AgregarSoftwareDTO;
 import Dominio.Computadora;
+import Dominio.Instalacion;
 import Interfaces.ICentroDAO;
 import Interfaces.IComputadoraDAO;
 import java.net.InetAddress;
@@ -122,5 +123,10 @@ public class ComputadoraNegocio implements IComputadoraNegocio {
         if (ip == null || ip.isBlank() || (!ip.matches(IPV4_REGEX) && !ip.matches(IPV6_REGEX))) {
             throw new NegocioException("La IP es inválida.");
         }
+    }
+
+    @Override
+    public List<Instalacion> listarSoftwareComputadora(Long idComputadora) throws NegocioException {
+        return CD.softwareInstalado(idComputadora);
     }
 }

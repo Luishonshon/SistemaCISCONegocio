@@ -4,6 +4,7 @@ import DTO.computadoras.ActualizarEstadoComputadoraDTO;
 import DTO.computadoras.AgregarComputadoraDTO;
 import DTO.computadoras.FiltroComputadoraDTO;
 import Dominio.Computadora;
+import Dominio.Instalacion;
 import java.util.List;
 import negocio.ComputadoraNegocio;
 import negocio.IComputadoraNegocio;
@@ -40,6 +41,11 @@ public class ComputadoraFacade implements IComputadoraFacade {
     @Override
     public Computadora agregarComputadora(AgregarComputadoraDTO computadoraData, Long idSotfware) throws NegocioException {
         return CN.agregarComputadora(computadoraData, idSotfware);
+    }
+
+    @Override
+    public List<Instalacion> listarSoftwareComputadora(Long idComputadora) throws NegocioException {
+        return CN.listarSoftwareComputadora(idComputadora);
     }
 
 }

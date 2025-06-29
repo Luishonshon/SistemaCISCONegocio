@@ -6,6 +6,7 @@ package negocio;
 
 import DTO.software.FiltroSoftwareDTO;
 import Dominio.Software;
+import java.util.List;
 
 /**
  *
@@ -13,5 +14,4 @@ import Dominio.Software;
  */
 public interface ISoftwareNegocio {
 
-    public Software listarSoftware(FiltroSoftwareDTO filtroListaSoftware);
 }
