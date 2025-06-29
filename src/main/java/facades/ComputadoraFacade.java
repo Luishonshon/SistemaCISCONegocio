@@ -18,17 +18,17 @@ public class ComputadoraFacade implements IComputadoraFacade {
     public final IComputadoraNegocio CN = new ComputadoraNegocio();
 
     @Override
-    public List<Computadora> listarComputadorasPorCentro(FiltroComputadoraDTO filtro) {
+    public List<Computadora> listarComputadorasPorCentro(FiltroComputadoraDTO filtro) throws NegocioException {
         return CN.listarComputadorasPorCentro(filtro);
     }
 
     @Override
-    public Computadora apartarComputadora(ActualizarEstadoComputadoraDTO alumnoData) {
+    public Computadora apartarComputadora(ActualizarEstadoComputadoraDTO alumnoData) throws NegocioException {
         return CN.apartarComputadora(alumnoData);
     }
 
     @Override
-    public void liberarComputadora(ActualizarEstadoComputadoraDTO alumnoData) {
+    public void liberarComputadora(ActualizarEstadoComputadoraDTO alumnoData) throws NegocioException {
         CN.liberarComputadora(alumnoData);
     }
 

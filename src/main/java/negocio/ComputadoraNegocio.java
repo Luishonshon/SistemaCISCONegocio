@@ -43,12 +43,12 @@ public class ComputadoraNegocio implements IComputadoraNegocio {
     }
 
     @Override
-    public Computadora apartarComputadora(ActualizarEstadoComputadoraDTO alumnoData) {
+    public Computadora apartarComputadora(ActualizarEstadoComputadoraDTO alumnoData) throws NegocioException{
         Computadora computadora;
         alumnoData.setEstadoNuevo("ocupada");
         //Validaciones
         computadora = CD.actualizarEstado(alumnoData);
-        //Validaciones
+        validarAtributosComputadora(computadora);
         return computadora;
     }
 
@@ -65,6 +65,7 @@ public class ComputadoraNegocio implements IComputadoraNegocio {
         if (computadora == null) {
             throw new NegocioException("Computadora no válida");
         }
+        validarAtributosComputadora(computadora);
         return computadora;
     }
 
@@ -99,7 +100,7 @@ public class ComputadoraNegocio implements IComputadoraNegocio {
             throw new NegocioException("El id de la computadora es inválido.");
         }
 
-        if (Integer.valueOf(computadora.getNumero()) == null || !String.valueOf(computadora.getNumero()).matches("^[0-9]{1,10}$")) {
+        if (!String.valueOf(computadora.getNumero()).matches("^[0-9]{1,10}$")) {
             throw new NegocioException("El número de la computadora es inválido.");
         }
 

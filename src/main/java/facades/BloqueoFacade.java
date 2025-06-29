@@ -2,6 +2,7 @@ package facades;
 
 import DAO.AlumnoDAO;
 import DTO.alumnos.BloquearAlumnoDTO;
+import Dominio.Alumno;
 import Dominio.Bloqueo;
 import java.util.List;
 import negocio.BloqueoNegocio;
@@ -27,8 +28,8 @@ public class BloqueoFacade implements IBloqueoFacade {
      * @throws NegocioException
      */
     @Override
-    public Bloqueo desbloquearAlumno() throws NegocioException {
-        return BN.desbloquearAlumno();
+    public Bloqueo desbloquearAlumno(Alumno alumno) throws NegocioException {
+        return BN.desbloquearAlumno(alumno);
     }
 
     @Override

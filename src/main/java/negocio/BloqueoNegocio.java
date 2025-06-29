@@ -2,6 +2,7 @@ package negocio;
 
 import DAO.AlumnoDAO;
 import DTO.alumnos.BloquearAlumnoDTO;
+import Dominio.Alumno;
 import Dominio.Bloqueo;
 import java.time.LocalDate;
 import java.util.List;
@@ -24,16 +25,22 @@ public class BloqueoNegocio implements IBloqueoNegocio {
     }
 
     @Override
-    public Bloqueo desbloquearAlumno() throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Bloqueo desbloquearAlumno(Alumno alumno) throws NegocioException {
+        Bloqueo bloqueo;
+        //Validaciones
+        bloqueo = AD.desbloqueAlumno(alumno);
+        //Validaciones
+        return bloqueo;
     }
 
     @Override
     public List<Bloqueo> listarBloqueos() throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<Bloqueo> bloqueos;
+        bloqueos = AD.Bloqueos();
+        validarListaBloqueos(bloqueos);
+        return bloqueos;
     }
 
-    
     //Validadores
     private void validarBloquearAlumnoDTO(BloquearAlumnoDTO datos) throws NegocioException {
         if (datos == null) {
@@ -60,7 +67,7 @@ public class BloqueoNegocio implements IBloqueoNegocio {
         }
     }
 
-    private void validarBloqueo(Bloqueo bloqueo) throws NegocioException{
+    private void validarBloqueo(Bloqueo bloqueo) throws NegocioException {
         if (bloqueo == null) {
             throw new IllegalArgumentException("El objeto Bloqueo no puede ser nulo");
         }
@@ -85,12 +92,12 @@ public class BloqueoNegocio implements IBloqueoNegocio {
             throw new NegocioException("El alumno no puede ser nulo");
         }
     }
-    
-    private void validarListaBloqueos(List<Bloqueo> bloqueos) throws NegocioException{
-        if (bloqueos == null){
+
+    private void validarListaBloqueos(List<Bloqueo> bloqueos) throws NegocioException {
+        if (bloqueos == null) {
             throw new NegocioException("Lista nula");
         }
-        for (Bloqueo bloqueo: bloqueos){
+        for (Bloqueo bloqueo : bloqueos) {
             validarBloqueo(bloqueo);
         }
     }
